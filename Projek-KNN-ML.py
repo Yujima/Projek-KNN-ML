@@ -9,10 +9,10 @@ import seaborn as sn
 
 from sklearn import preprocessing
 from sklearn import utils
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.model_selection import train_test_split, cross_val_score, KFold
-from sklearn.metrics import accuracy_score, classification_report, precision_score, recall_score, confusion_matrix
+from sklearn.model_selection import train_test_split, KFold
 
 #Inisialisasi dataset
 link = "dataset\\seattleWeather_1948-2017.csv"
@@ -33,6 +33,11 @@ y = data.iloc[:, -1].values
 
 #Pembagian data latih dan data uji
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.1, random_state = 0)
+
+#Feature Scaling
+sc = MinMaxScaler()
+X_train = sc.fit_transform(X_train)
+X_test = sc.transform(X_test)
 
 #Inisialisasi model
 knn = KNeighborsClassifier(n_neighbors=9)
