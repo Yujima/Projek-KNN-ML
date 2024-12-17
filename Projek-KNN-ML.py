@@ -1,11 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.pyplot as pltNew
 import pandas as pd
-import seaborn as sn
 
 from sklearn import preprocessing
 from sklearn import utils
